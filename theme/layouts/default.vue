@@ -6,9 +6,8 @@ const components = defineComponent({ ThemeLayout })
 </script>
 
 <template>
-  <theme-layout class="center">
-    <div class="content default my-auto h-full flex flex-col">
-    <!-- <div class="my-auto flex flex-col "> -->
+  <theme-layout class="default">
+    <div class="content my-auto h-full">
       <slot />
     </div>
   </theme-layout>

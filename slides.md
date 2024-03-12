@@ -283,6 +283,7 @@ Remember not to get carried away about _declarative_ code -- all of these framew
 -->
 
 ---
+layout: default
 rightHeader: What is GitOps?
 ---
 
@@ -328,7 +329,7 @@ But the **desired state** could include specific  measurable results (performanc
 
 One point to mention here: it doesn't really matter _how_ this is achieved. WHether it's event-based monitoring of actual state changes, or polling the state over and over again. Whether the agent pulls directly from git, or there's a pipeline that moves code from source control to effective application. For those of you familiar with the old Windows PowerShell DSC, a trivial GitOps agent might just be the old LCM in pull and repair mode, configured with short intervals...
 
-As I said about Infrastructure as Code, there are many tools here, and we've clearly not reached peak GitOps -- picking agents right now comes down to making the right trade-offs for your systems -- you will probably need to combine several of these tools to get close to where you want to be.
+As I said about Infrastructure as Code, there are many tools here, and we've clearly not reached peak GitOps -- picking agents right now comes down to making the right trade-offs for your systems -- you will probably need to combine several of these tools to get where you want to be.
 
 -->
 
@@ -358,10 +359,6 @@ background: https://images.unsplash.com/photo-1516670428252-df97bba108d1?ixlib=r
 
 We **definitely** don't have time for a full deep dive into best practices, but I want to touch on a few things that I think are most useful to people who are just getting starting with GitOps Principles.
 
-GitOps at scale requires standardization.
-
-In order to actually manage systems with software agents, we need to standardize everything that we can. Beyond how we build and deploy the software, to how we manage dependencies, how the services are configured, how they scales (and how we know they need to scale). We increase our ability to change quickly by standardizing as much as possible.
-
 A great example of this is the Twelve-Factor app, a methodology for writing software that works well in software as a service environments. 12 Factor Apps are designed to be _declarative_, _portable_, _scalable_, and _concurrent_. I only consider two of the "factors" in this methodology to actually be a _requirement_ for GitOps. I also believe these practices are important regardless of your hosting environment. If you're doing GitOps on Kubernetes, I almost consider them all to be mandatory. Have your developers and architecture check 12Factor.net and get agreement on standardizing as much of this as possible in your development organization.
 
 Finally, change-management.
@@ -372,6 +369,44 @@ You should have a clear process for how changes are rolled back, and how they ar
 
 -->
 
+---
+rightHeader: Best Practices
+---
+
+# Standardization
+
+- Start small
+  - Source control
+  - Pull requests
+  - Continuous **Delivery**
+  - Automate Deployments
+- Best of breed tools
+  - Declarative
+  - Idempotent
+- Dependency management
+
+<!--
+
+GitOps basically assumes you're already doing DevOps. Build a culture of collaboration and shared goals, with a focus on automation and repeatability. Automate your health checks, and build have a culture of continuous improvement and shared responsibility.
+
+GitOps at scale requires standardization.
+
+Think about control theory, building a thermostat or a cruise control. Imagine we built a thermostat for forced air HVAC systems and then tried to use that to control a steam radiator. It's not going to work. You'll overheat the house every time, and flail back and forth between too hot and too cold.
+
+To minimize the cost of managing systems with software agents, we need to standardize everything that we can. Beyond how we build and deploy the software, to how we manage dependencies, how the services are configured, how they scales (and how we know they need to scale). We increase our ability to change quickly by standardizing as much as possible.
+
+So don't assume what works for others will work for you. Start small, with a single project. If you don't have source control, start with that. If you don't use pull requests, start with that. If you don't have automatic builds that deliver versioned binary packages, start with that. If you don't have automated deployments, start with that. If you don't have health checks, add those.
+
+As you identify your next steps, evaluate and choose tools. **PICK THE BEST TOOLS** so you won't be tempted to switch, and won't have reasons to let people use alternatives. Use the same tools across all your projects until they're not the best anymore. Don't be afraid to re-evaluate and choose better tools, but don't leave your old things using the old tools.
+
+When you're picking tools, keep those two words in mind: declarative and idempotent.
+- Infrastructure and configuration should be declarative, separate from the steps to make changes
+- The automation that applies the configuration should be idempotent, so that it can be run repeatedly without causing harm.
+
+Make sure you have a good dependency management system. Make sure you have health checks. Make sure you have a good scaling system.
+ -->
+
+##
 ---
 class: columns
 rightHeader: Best Practices
@@ -472,14 +507,16 @@ Don't mix infrastructure, application and configuration
 - Separate approval processes
 - Different team ownership
 
-
 <!--
-This may seem counter-intuitive, since I've been telling you to use the same systems for both, but the lifecycle for changes are different in these different repositories.
+The goal in GitOps is continuous deployment, but we still need to version ... everything.
 
-- You don’t want a configuration change (like scaling a deployment from three to four nodes) to trigger a CI/CD ebuild and test of your application
-- You especially don't want to generate new versions of your application/container for every config change
-- You don't want to hold up CI/CD builds with change management approvals
-- You may have different teams responsible for infrastructure and application code
+I'm not a big fan of mono-repos in general, but for GitOps we have a few special reasons for separating our infrastructure, apps, and configuration repositories.
+
+- The primary reason is to keep the versioning separate, and avoid triggering CI/CD pipelines for config or infrastructure changes. You don’t want a configuration change (like scaling a deployment from three to four nodes) to trigger a CI/CD rebuild and test of your application (not to mention creating containers, etc).
+- You also don't want to hold up CI/CD builds with the change management approvals you might need for infrastructure changes
+- You may have different teams responsible for infrastructure and application code or configuration, and different code-review or approval processes.
+
+You could, hypothetically, put a bunch of path filters on your triggers and validation rules, etc., but that adds unnecessary complications and potential for error.
 
 -->
 
