@@ -56,7 +56,9 @@ Solving problems with code
 
 <!--
 
-For those of you who came to this talk despite not knowing me, thank you, and let me introduce myself. I'm Joel Bennett, I'm from upstate New York by way of the grasslands of Guanacaste, Costa Rica. I have been "Jaykul" (pronounced J. Cool) online since the 1990s, and I'm currently the Principal DevOps Engineer at loanDepot! I've been a Microsoft PowerShell MVP for 15 years, an open source programmer for over 25 years, a Christian for uhm, let's go with "over 40 years," and bilingual for even longer than that.
+For those of you who came to this talk despite not knowing me, thank you, and let me introduce myself.
+
+I'm Joel Bennett. I'm from upstate New York by way of the grasslands of Guanacaste, Costa Rica. I have been "Jaykul" (pronounced J. Cool) online since the 1990s, and I'm currently a Principal DevOps Engineer! I've been a Microsoft PowerShell MVP for 15 years, an open source programmer for over 25 years, a Christian for uhm, let's go with "over 40 years," and bilingual for even longer than that.
 
 -->
 
@@ -80,15 +82,25 @@ background: https://images.unsplash.com/photo-1516670428252-df97bba108d1?ixlib=r
 <!--
 So, what is GitOps? Can anyone put it in a single sentence?
 
-THe [OpenGitOps](https://opengitops.dev/) project -- which is a CNCF Sandbox project from the [GitOps Working Group](https://github.com/cncf/tag-app-delivery/tree/main/gitops-wg) under the CNCF App Delivery TAG) defines GitOps as ((CLICK)) "a set of principles for operating and managing software systems."
+The [OpenGitOps][1] project -- which is a CNCF Sandbox project from the [GitOps Working Group][2] under the CNCF App Delivery TAG) defines GitOps as
 
-((CLICK)) It definitely includes infrastructure as code, but it's not that simple.
+**{NEXT}** "a set of principles for operating and managing software systems."
 
-((CLICK)) GitOps seeks to create systems that continuously update and repair themselves.
+**{NEXT}** GitOps definitely includes infrastructure as code, but it's not that simple.
 
-I hope you'll hear me when I say this is about _operating_ and _managing_ software systems, not _building_ them. You can follow GitOps Principles even when you're hosting _third party_ software, but it's not relevant if you're building software for others to run. As a result, GitOps is strictly a _subset_ of DevOps, not a _replacement_ for DevOps.
+**{NEXT}** GitOps is about creating systems that continuously update and repair _themselves_.
 
-I have to say that I think of GitOps as just the next iteration on _Agile_, following _DevOps_, and _Continuous Delivery_. But those terms are so **overused** in recruiting and marketing that sometimes GitOps practitioners actually object to being associated with them, so I'm going to take _just 2 minutes_ to quickly go through the ((CLICK)) historical context before we talk about the definition of GitOps.
+## I hope you'll hear me when I say:
+
+### GitOps is about _operating_ and _managing_ software systems, not _building_ them.
+
+You can follow GitOps Principles even when you're hosting _third party_ software, and not writing your own applications, but it's not relevant if you are building software for others to run. In other words, GitOps Principles apply only to a _strict subset_ of DevOps, and GitOps is not a _replacement_ for DevOps.
+
+I have to say that _for SaaS_, I do think of GitOps as the next iteration on _Agile_, following _DevOps_, and _Continuous Delivery_. But those terms are so **overused** in recruiting and marketing that sometimes GitOps practitioners actually object to being associated with them, so I'm going to take _just 2 minutes_ to quickly **{NEXT}** go through the historical context before we talk about the definition of GitOps.
+
+[1]: https://opengitops.dev/
+[2]: https://github.com/cncf/tag-app-delivery/tree/main/gitops-wg
+
 -->
 
 ---
@@ -168,13 +180,15 @@ GitOps is a _set of principles_ for operating and managing software systems.
 
 <!--
 
-There were twelve principles behind the Agile Manifesto, but the first and highest priority was to "satisfy the customer through early and _continuous delivery_ of valuable software." The core ideas were about _people_ and their attitudes, and how we manage them in projects: to let them self-organize, to welcome change, to reflect on the results, to adapt your processes frequently, and to focus on _collaboration_, and _communication_.
+Back in 2001 engineers who were doing what they called "agile software development" got together and signed the _Agile Manifesto_. There were twelve principles behind it, but the first and highest priority was to **satisfy the customer through early and _continuous delivery_ of valuable software.** The core ideas were about _people_ and their attitudes, and how we manage them in projects: let them self-organize, welcome change, reflect on the results, _adapt_ your processes. The agile manifesto focused on people, and how they _collaborate_, and _communicate_.
 
-However, as developers sought _agility_ through _continuous delivery_, they began to feel that traditional operations teams and frameworks (like [ITIL](https://www.ibm.com/topics/it-infrastructure-library)) were the bottleneck. Thus was born the [DevOps movement](https://www.atlassian.com/devops/what-is-devops/history-of-devops), which was all about the _cultural change_ necessary to _unify_ software development (Dev) and operation (Ops) organizations. Adopting DevOps meant finding common goals and shared principles between those groups, and establishing shared performance indicators so they wouldn't be working at cross-purposes.
+However, as developers sought _agility_ through _continuous delivery_, they began to feel that traditional operations teams and frameworks (like [ITIL](https://www.ibm.com/topics/it-infrastructure-library)) were the bottleneck. Thus was born the [DevOps movement](https://www.atlassian.com/devops/what-is-devops/history-of-devops), which was all about the _cultural change_ necessary to _unify_ software development (Dev) and operation (Ops) organizations. Adopting DevOps meant finding common goals and principles between those two groups, and establishing shared performance indicators so they wouldn't be working at cross-purposes.
 
-Meanwhile, teams that had not hit bottlenecks started talking about "Continuous Delivery" and created integrated teams, with developers, testers, and operations engineers focusing on increasing the reliability and frequency with which they can build, test, and release software. They found some success by mostly treating _people problems_ as tangential, and focusing on the technical processes required: automated build, test, and software deployment. Ultimately they began to show success at reducing both _cost_ and _risk_ by enabling small, incremental changes, released frequently. In 2014, Dr. Dobbs magazine declared Continuous Delivery "The Agile Successor."
+Meanwhile, teams that had not hit bottlenecks started talking more about "Continuous Delivery." They created integrated teams, with developers, testers, and operations engineers together, and focused on increasing the reliability and frequency with which they could build, test, and release software. They found some success by mostly treating _people problems_ as tangential, and focusing on the technical processes required: **automated** build, test, and deployment. Ultimately they began to show success at reducing both _cost_ and _risk_ by enabling small, incremental changes, released frequently. In 2014, Dr. Dobbs magazine actually called Continuous Delivery "The Agile Successor."
 
-And this brings us to GitOps -- the GitOps principles are derived from modern software operations and rooted in these pre-existing and widely adopted best practices. The new term GitOps was coined by Weaveworks CEO Alexis Richardson, and through the CNCF (Cloud Native Computing Foundation), quickly became a term of art which they have worked to define and promote.
+Which finally brings us to GitOps.
+
+The GitOps principles are derived from modern software operations and are rooted in _all of these_ pre-existing and widely adopted best practices. This new term "GitOps" was coined by Weaveworks CEO Alexis Richardson, and through the CNCF (Cloud Native Computing Foundation), quickly became a term of art which they have worked to define and promote.
 
 -->
 
@@ -227,70 +241,119 @@ Software agents _continuously_ observe actual system state and _attempt to apply
 </v-click>
 
 <!--
+So (according to the GitOps Working Group) ...
+
 The desired state of a GitOps managed system must be: ...
 
-[[HIT SPACE]]
+**{NEXT}**
 
 Actually, take a minute to read this yourself. This is the entirety of what the Cloud Native Computing Foundation wrote about GitOps.
 
-As you can see, GitOps does not focus on collaboration, people or organizations. It's simply, practical principles for managing software systems: how we express the desired state, and how we ensure that the system _remains_ in that state.
+**{PAUSE}**
+
+As you can see, GitOps does not focus on collaboration, nor on people or organizations. It's simply _practical principles_ for managing software systems: how should we express and store the desired state, and how do we ensure that the system _remains_ in that state.
+
+### Let's talk about these a little...
 -->
 
 ---
-rightHeader: What is GitOps?
 layout: image-right
+rightHeader: What is GitOps?
 image: /images/turtles-all-the-way-down.jpg
 bleed: true
 ---
 
-# Declarative and Versioned
+# Declarative
+
+The code for the desired state is _independent_ of the steps needed to get there.
 
 <v-click>
 
-**Declarative** means the code for the desired state is _independent_ of the steps needed to get there.
-
-</v-click>
-<v-click>
-
-**Versioned and immutable.** Because desired state is source code...
+# Versioned and immutable
 
 ## It's code all the way down
 
 1. The software _source_ is code
-2. The configuration _source_ is code
-3. The infrastructure _source_ is code
+2. The infrastructure _source_ is code
+3. The configuration _source_ is code
 4. _All **source** code is version controlled_
 
 </v-click>
 
+<!--
+What does it mean that our desired state is _declarative_?:
+
+In programming, we talk about Imperative code, which describes a set of steps to be taken to achieve a goal, and about Declarative code, which simply describes the goal itself.
+
+The Desired State of systems always needs to be written _declaratively_,
+expressing _how things should be_, without regard for _how they currently are_,
+because there are too many possible actual states.
+We succinctly describe our desired state, and rely on an agents or operator to analyze the current state and determine the specific steps to be taken...
+
+**{NEXT}**
+
+Versioned and immutable:
+
+I tend to think that versioning your state declaration is so obvious at this point that it goes without saying, but some people need every detail spelled out, and others will _deliberately_ flaunt anything that's not in writing. For the record:
+
+1. Developers have been tracking changes to their source code for decades
+2. Of course, you know you should declare your infrastructure as (source) code
+3. Now, you need to treat your configuration as source code too
+4. And obviously, you need to store _all code_ in your version control system
+
+It does _not_ have to be git, but you should probably use whatever your developers use.
+
+The bottom line is that you have versions of your desired state that are immutable, and you can revert, and thus (re)deploy an old version.
+
+-->
+
+---
+layout: image-right
+rightHeader: What is GitOps?
+image: /images/robotic-agents.jpg
+bleed: true
+---
+
+# Pulled Automatically
+
+GitOps uses **software agents** that **pull** the desired state from source. This scales well, and only requires _read_ access to source.
+
 <v-click>
 
-IaC systems abound: Terraform, Ansible, Bicep, DSC, Kubernetes, …
+# Continuously Reconciled
+
+**Reconciliation** is the process of ensuring the _actual state_ matches the _desired state_. It's triggered _whenever_ there is a divergence -- whether a new version of the desired state, or drift in the actual state.
+
+</v-click>
+<v-click>
+
+## Continuous Deployment is great
+
+### But please don't conflate
 
 </v-click>
 
 <!--
-Declarative:
 
-One of the reasons I've started talking about "GitOps" (outside of Kubernetes) is that I started being frustrated at people using "infrastructure as code" to describe systems like Packer and Docker, which create an _initial_ configuration through imperative scripting, and _pretending_ that IaC is just a literal description, and anything that meets the definition of "code" is good enough.
+The key thing that **distinguishes** GitOps are _software agents_ that automatically pull the desired state from source and _continuously_ attempt to apply it through a process known as **{{NEXT}}** reconciliation.
 
-GitOps reminds us that Desired State must be declarative code, expressing _how things should be_, without regard for _how they are_. We aim to separate the imperative steps to be taken to get there from our description of the desired state.
+Reconciliation is _**not** just_ triggered by commits to source control. GitOps includes continuous monitoring and repairing. It's not just about _deploying_ when there's a new versions, it's about _monitoring_ the system, and keeping it in the desired state.
 
-Versioned and immutable:
+GitOps is deliberately defined so it can expand to define more of the _desired state_ of systems -- not just what infrastructure is there, and which version of the software, but also what the _performance_ and _availability_ of the system _should be_.
 
-I tend to think that versioning your state is so obvious at this point that it goes without saying, but some people need every detail spelled out, and others will _deliberately_ flaunt anything that's not in writing. For the record:
+#### Now. You _will_ see people talking about "push GitOps" ...
 
-1. Developers have been tracking changes to their source code for decades
-2. Now you know you should declare your infrastructure as (source) code
-3. Please believe that you need to treat your configuration as source code (version it with everything else)
-4. And obviously, you need to store _all of this_ in your version control system
+_Here's my two cents:_ People who downplay the "pull" are usually also downplaying the "agents" and most often they are coopting the term "GitOps" to describe _whatever they were already doing_ with continuous deployments. That's not useful.
 
-It does _not_ have to be git. You should probably use whatever your developers use.
-The bottom line is that you have versions (or tags) that are immutable, and you can revert, and thus, (re)deploy an old version.
+**{{NEXT}}**
 
-There are many systems and frameworks for Infrastructure as Code, and picking one comes down to making the right trade-offs for your systems. It could be Terraform or Bicep describing cloud resources, Ansible or DSC describing on-premises servers, Yaml describing Kubernetes resources, but most likely, it's a combination of all of the above, or many others.
+There's nothing wrong with Continuous deployment.
 
-Remember not to get carried away about _declarative_ code -- all of these frameworks have imperative code under the covers in the "resources" and the tools themselves, we are only concerned with keeping the desired state separate from the steps required to get there, so that we can ...
+**{{NEXT}}**
+
+But let's not confuse the two. Using pipelines to trigger Continuous Deployment on merge to main is not GitOps. It's Continuous Deployment.
+
+**{{NEXT}}**
 
 -->
 
@@ -299,49 +362,52 @@ layout: default
 rightHeader: What is GitOps?
 ---
 
-# Continuously Updated and Reconciled
+# GitOps wants to be more
 
-<v-click>
+<v-clicks>
 
-GitOps depends on **software agents** that _automatically_ update and _continuously reconcile_ desired state.
-
-</v-click><v-click>
-
-**Reconciliation** is the process of ensuring the _actual state_ matches the _desired state_.
-
-This is not simple CI/CD, with pre-set triggers.
-
-Reconciliation is triggered _whenever_ there is a divergence -- whether that is a new version of the desired state, or drift in the actual state.
-
-</v-click><v-click>
+## Conceptually different
 
 > GitOps follows [control theory](https://en.wikipedia.org/wiki/Control_theory) and operates in a closed-loop, where feedback represents how previous attempts to apply a desired state have affected the actual state. Actions are taken based on policies, it order to _reduce deviation_ over time.
 
-</v-click><v-click>
+- ### Is the Azure Pipeline Agent a GitOps agent?
+- ### Is Windows Desired State Configuration (DSC) a GitOps agent?
 
-Desired State systems abound too: DSC, Puppet, Chef, Ansible, Flux, ArgoCD
-
-</v-click>
+</v-clicks>
 
 <!--
+GitOps is not _just_ Continuous Deployment. But also, GitOps _wants_ to be more than it currently is...
 
-The thing that **makes** GitOps  are the _software agents_ that automatically pull the desired state from source and continuously attempt to apply it. In my mind, this is the BIG difference between "infrastructure as code" plus "continuous deployment" and GitOps.
+**{{NEXT}}**
+There is a _conceptual_ difference, because as I said before,
+the core of GitOps are these automated agents,
+and they monitor the current state,
+in addition to polling for new versions.
 
-Reconciliation is _**not** just_ deploying repeatedly, and it's not just triggered by commits to source control. GitOps including continuously monitoring and repairing.
+But it's more than that. Although they failed to capture this in the four principles, Open GitOps explains in their glossary that ...
+**{{NEXT}}**
 
-In fact, although they failed to capture this in the four principles, Open GitOps explains in the glossary that ...
+GitOps is based on control-theory, a field of engineering and applied mathematics that develops systems like cruise control and thermostats.
+This means that Agents should work to drive the system to it's desired state while minimizing delay, overshoot, and steady-state errors, ensuring stability and optimality.
 
-GitOps is based on control-theory, a field of engineering and applied mathematics that develops systems like cruise control and thermostats. In other words, a minimum implementation might just:
-- automatically destroy deviating cattle servers and
-- deploy new infrastructure to match a template, then
+In other words, although a _minimum_ implementation today might just:
+- automatically destroy deviating cattle servers or containers and
+- deploy new infrastructure or containers based on the template, then
 - deploy the correct version of the software, and
-- set the configuration;
+- set the configuration to the current values ...
 
-But the **desired state** could include specific  measurable results (performance, downtime, etc.) and Agents should work to drive the system to it's desired state while minimizing delay, overshoot, and steady-state errors, ensuring stability and optimality.
+The goal is for agents to make smaller changes to move the system _toward_ the desired state.
+They should be _feedback_ driven, and _policy_ driven, and they should _reduce deviation_ over time.
 
-One point to mention here: it doesn't really matter _how_ this is achieved. WHether it's event-based monitoring of actual state changes, or polling the state over and over again. Whether the agent pulls directly from git, or there's a pipeline that moves code from source control to effective application. For those of you familiar with the old Windows PowerShell DSC, a trivial GitOps agent might just be the old LCM in pull and repair mode, configured with short intervals...
+**{{NEXT}}**
+Here are a couple of questions for you:
+- Is the Octopus Deploy Agent a GitOps agent?
+- Is Windows Desired State Configuration (DSC) a GitOps agent?
 
-As I said about Infrastructure as Code, there are many tools here, and we've clearly not reached peak GitOps -- picking agents right now comes down to making the right trade-offs for your systems -- you will probably need to combine several of these tools to get where you want to be.
+The Octopus Deploy Agent is like the Azure Pipelines Agent, it's a _push_ agent, and it just waits for jobs to be pushed to it. It does not monitor anything.
+
+On the other hand, DSC (or the LCM, specifically), has versioned and declarative desired state, which it pulls automatically, and continuously reconciles. It's not a perfect match, because it doesn't actually have multiple versions in the source... but it's very close. At work we've built a system where we manage our desired state as json files, and "build" MOF files (and publish to the Pull server) on commit to main. Each of our servers has the LCM configured in pull mode to continuously monitor and pull new versions....
+
 
 -->
 
@@ -380,6 +446,41 @@ Finally, change-management.
 As I said before: you don't _have_ to use Git, but you should use the same source control systems and branching strategies across your organization. You need to have clear processes for how changes are proposed, reviewed, and deployed. When all of your changes are done through code, the merge request process in your favorite source control server becomes an easy place to build change-management processes. You can enforce policies and sign-off, require reviews by operators, enforce automated testing, etc. You can use builds and policies to enforce your processes across your organization.
 
 You should have a clear process for how changes are rolled back, and how they are audited. You should have a clear process for how changes are tested, and how they are monitored. You should have a clear process for how changes are communicated, and how they are documented. You should have a clear process for how changes are planned, and how they are prioritized. You should have a clear process for how changes are tracked, and how they are reported. You should have a clear process for how changes are managed, and how they are measured.
+
+-->
+
+
+---
+rightHeader: Best Practices
+---
+
+# Standardization
+
+In short, you can't control a train or a ship with the autopilot for a Tesla.
+
+<v-click>
+
+## Especially with micro-services
+
+### Automation requires standardization
+
+### Reduce variations and alternatives
+
+### Avoid custom one-off implementations
+
+</v-click>
+
+<!--
+
+Remember, GitOps assumes you're already doing DevOps. Everything is based on a culture of collaboration, continuous improvement, shared goals, and shared responsibility.
+
+Let's talk about this as control theory. Let's say you're building a thermostat or a cruise control. Imagine I built an auto pilot for a sports car, and then tried to use it to control my fleet of tractor trailers. Or imagine I built a thermostat for the forced-air system in a small home, and tried to apply it at my school with hot water radiators.
+
+The biggest _improvements_ from following GitOps Principles come when you're managing systems that are made up of many small services, where those services are all built with the same technologies and frameworks, are packaged and deployed the same way, have similar configuration, monitoring, and management options, and even have similar density and scale requirements.
+
+None of this is to say you can't have different classes of systems, just that each time you have something that's different it will cause friction and extra work.
+
+For each type of system, all the teams that interact with it need to build custom knowledge and understanding, and in the worst case, unique, one-off agents or agent configurations.
 
 -->
 
@@ -434,12 +535,6 @@ rightHeader: Best Practices
 </div>
 
 <!--
-
-GitOps basically assumes you're already doing DevOps. Build a culture of collaboration and shared goals, with a focus on automation and repeatability. Automate your health checks, and build have a culture of continuous improvement and shared responsibility.
-
-GitOps at scale requires standardization.
-
-Let's talk about this as control theory. Let's say you're building a thermostat or a cruise control. Imagine we built a thermostat for forced air system and then tried to use that to control a steam radiator. You'll overheat the house, and actually flail back and forth between too hot and too cold.
 
 To minimize the cost of managing systems with software agents, we need to standardize _everything_ that we can. Beyond how we build and deploy the software, to how we manage dependencies, how services are configured, how they scales (and how we know they need to scale). We increase our ability to change quickly by standardizing as much as possible.
 
@@ -644,3 +739,18 @@ Are all of these declarative? Are they idempotent?
 One thing that you have to really understand when you start doing GitOps is that sometimes, even tools which are declarative may support changing _some_ things, but not others. For example, if you change the _name_ of something, most tools don't rename it -- they create a new one (and they might not even delete the old one).
 
 <!-- I'm not even kidding when I say ChatGPT filled in this list, in this order -->
+
+
+
+One point to mention here: it doesn't really matter _how_ this is achieved. WHether it's event-based monitoring of actual state changes, or polling the state over and over again. Whether the agent pulls directly from git, or there's a pipeline that moves code from source control to effective application. For those of you familiar with the old Windows PowerShell DSC, a trivial GitOps agent might just be the old LCM in pull and repair mode, configured with short intervals...
+
+As I said about Infrastructure as Code, there are many tools here, and we've clearly not reached peak GitOps -- picking agents right now comes down to making the right trade-offs for your systems -- you will probably need to combine several of these tools to get where you want to be.
+
+
+
+**{NEXT}**
+
+There are many systems and frameworks for Infrastructure as Code, and picking one comes down to making the right trade-offs for your systems. It could be Terraform or Bicep describing cloud resources, Ansible or DSC describing on-premises servers, Yaml describing Kubernetes resources, but most likely, it's a combination of several systems.
+
+I have to add: don't get carried away about _declarative_ code -- all of these frameworks have imperative code under the covers in the "resources" and the tools themselves, we are only concerned with keeping our expression of desired state separate from the steps required to get there, so that we can ...
+[^1]: [Harness](https://www.harness.io/blog/gitops-the-push-and-pull-approach), [DevOpsSchool](https://www.devopsschool.com/blog/gitops-approach-pull-vs-push/)
