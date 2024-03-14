@@ -14,6 +14,7 @@
   border-radius: 5em;
 }
 
+/*  This is a special slide that's themed like the Open GitOps website */
 .slidev-layout.open-gitops {
   /* background: var(--slidev-theme-blue); */
 
@@ -35,7 +36,7 @@
     @apply ma-0 relative;
     z-index: 2;
 
-    &::before {
+    &::before { /* They put a number in their own ::before.content */
       @apply absolute transform -translate-x-1/2 -translate-y-1/4em;
       z-index: -1;
       font-size: 2em;
@@ -95,9 +96,23 @@
   column-gap: 2em;
 }
 */
+.slidev-layout.columns.grid-rows-2 .content {
+  @apply grid-rows-2
+}
+.slidev-layout.columns.grid-rows-3 .content {
+  @apply grid-rows-3
+}
+.slidev-layout.columns.grid-rows-4 .content {
+  @apply grid-rows-4
+}
+.slidev-layout.columns.grid-rows-5 .content {
+  @apply grid-rows-5
+}
+
+
 .slidev-layout.columns .content {
-  @apply grid grid-rows-5 grid-auto-flow-col gap-1em;
-  grid-template-rows: 3.5em repeat(4, minmax(1em, 1fr));
+  @apply grid grid-auto-flow-col gap-1em;
+  /* grid-template-rows: 3.5em repeat(4, minmax(1em, 1fr)); */
 
   div {
     * {
@@ -105,4 +120,22 @@
       }
   }
 
+}
+
+.slidev-layout.columns p {
+  font-size: 1vi;
+}
+
+.slidev-layout.columns h1.blocking {
+  &::after {
+    @apply col-span-3;
+    content: " ";
+    display: block;
+    position: absolute;
+    width: 90vw;
+    height: 100%;
+    margin-left: -5em;
+    margin-top: -1.25em;
+    border: 1px solid salmon;
+  }
 }
