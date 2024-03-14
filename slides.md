@@ -97,6 +97,18 @@ rightHeader: What is GitOps?
 
 # Historical Context
 
+<!--
+```mermaid {fontFamily: 'Ubuntu', theme: 'forest'}
+flowchart LR
+    Agile{{Agile}} --> DevOps
+    DevOps --> CI/CD
+    Agile --> CI/CD
+    CI/CD --> GitOps
+    DevOps --> GitOps
+    Agile --> GitOps
+```
+-->
+
 ```mermaid {fontFamily: 'Ubuntu', gitGraph: { mainBranchName: 'Agile', showCommitLabel: false } }
 gitGraph
     commit tag: "1993"
@@ -343,6 +355,8 @@ background: https://images.unsplash.com/photo-1516670428252-df97bba108d1?ixlib=r
 
 # Best Practices
 
+Or, how do I GitOps?
+
 </div>
 
 <v-clicks>
@@ -375,15 +389,49 @@ rightHeader: Best Practices
 
 # Standardization
 
-- Start small
-  - Source control
-  - Pull requests
-  - Continuous **Delivery**
-  - Automate Deployments
-- Best of breed tools
-  - Declarative
-  - Idempotent
-- Dependency management
+<div class="columns grid grid-auto-flow-col gap-1em grid-rows-1">
+
+<div>
+
+### Start small
+
+<v-click>
+
+- Source control
+- Pull requests
+- Continuous **Delivery**
+- Automate Deployments
+- Health checks
+
+</v-click>
+</div><div>
+
+### Best of breed tools
+
+<v-click>
+
+- Code-based
+- Declarative
+- Idempotent
+
+
+</v-click>
+</div><div>
+
+### Dependency management
+
+<v-click>
+
+- Vulnerability scanning
+- Prevent stale
+- Included in Health Checks
+- Included in Auto Scaling
+
+</v-click>
+</div>
+
+
+</div>
 
 <!--
 
@@ -391,24 +439,47 @@ GitOps basically assumes you're already doing DevOps. Build a culture of collabo
 
 GitOps at scale requires standardization.
 
-Think about control theory, building a thermostat or a cruise control. Imagine we built a thermostat for forced air HVAC systems and then tried to use that to control a steam radiator. It's not going to work. You'll overheat the house every time, and flail back and forth between too hot and too cold.
+Let's talk about this as control theory. Let's say you're building a thermostat or a cruise control. Imagine we built a thermostat for forced air system and then tried to use that to control a steam radiator. You'll overheat the house, and actually flail back and forth between too hot and too cold.
 
-To minimize the cost of managing systems with software agents, we need to standardize everything that we can. Beyond how we build and deploy the software, to how we manage dependencies, how the services are configured, how they scales (and how we know they need to scale). We increase our ability to change quickly by standardizing as much as possible.
+To minimize the cost of managing systems with software agents, we need to standardize _everything_ that we can. Beyond how we build and deploy the software, to how we manage dependencies, how services are configured, how they scales (and how we know they need to scale). We increase our ability to change quickly by standardizing as much as possible.
 
-So don't assume what works for others will work for you. Start small, with a single project. If you don't have source control, start with that. If you don't use pull requests, start with that. If you don't have automatic builds that deliver versioned binary packages, start with that. If you don't have automated deployments, start with that. If you don't have health checks, add those.
+### STEP
 
-As you identify your next steps, evaluate and choose tools. **PICK THE BEST TOOLS** so you won't be tempted to switch, and won't have reasons to let people use alternatives. Use the same tools across all your projects until they're not the best anymore. Don't be afraid to re-evaluate and choose better tools, but don't leave your old things using the old tools.
+Don't assume that what works for others will work for you.
+- Start small, with a single project.
+- If you don't have source control, start with that.
+- If you don't use pull requests, start with that.
+- If you don't have automatic builds that deliver versioned packages, start with that.
+- If you don't have automated deployments, start with that.
+- If you don't have health checks, add those.
+
+### STEP
+
+As you identify your next steps, evaluate and choose tools.
+Try to always **PICK THE BEST TOOLS**. Remember this is about standardization.
+- We don't want to be tempted to switch later
+- We don't want teams to have reasons people to use alternatives
+
+Use the same tools across all your projects until that tool is so far behind you can't justify it anymore.
+Don't be afraid to re-evaluate and choose better tools, but try to always migrate _everything_ when you migrate.
 
 When you're picking tools, keep those two words in mind: declarative and idempotent.
-- Infrastructure and configuration should be declarative, separate from the steps to make changes
+- Infrastructure and configuration should be declarative whenever possible.
+  If you can't find declarative tools, try to build your automation scripts as declarative tools!
 - The automation that applies the configuration should be idempotent, so that it can be run repeatedly without causing harm.
+  Again, if you can't find idempotent tools, wrap the tools in scripts to make them idempotent.
 
-Make sure you have a good dependency management system. Make sure you have health checks. Make sure you have a good scaling system.
- -->
+### STEP
+
+Finally, make sure you have a good dependency management system.
+This isn't just about libraries, it's also about service-to-service dependencies.
+Make sure you know where your dependencies are, that you have health checks and scaling in place.
+
+-->
 
 ##
 ---
-class: columns
+layoutClass: columns grid-rows-5
 rightHeader: Best Practices
 ---
 <div class="col-span-3">
@@ -496,8 +567,15 @@ Run admin/management tasks as one-off processes
 <!-- </v-clicks> -->
 
 ---
+class: grid-cols-12
+rightHeader: Best Practices
+---
 
 # Change Management
+
+<div class="leftColumn col-span-6">
+
+<v-clicks>
 
 ## Separate Repositories
 
@@ -506,6 +584,23 @@ Don't mix infrastructure, application and configuration
 - Independent life-cycles
 - Separate approval processes
 - Different team ownership
+
+</v-clicks>
+
+</div><div class="rightColumn col-span-6">
+
+<v-clicks>
+
+## Environment Considerations
+
+- Create versioned configuration artifacts
+- Import artifacts, or inherit a shared base
+- Use overlays for different environments
+- Think about versioning and promotion of the base
+
+</v-clicks>
+
+</div>
 
 <!--
 The goal in GitOps is continuous deployment, but we still need to version ... everything.
@@ -518,21 +613,14 @@ I'm not a big fan of mono-repos in general, but for GitOps we have a few special
 
 You could, hypothetically, put a bunch of path filters on your triggers and validation rules, etc., but that adds unnecessary complications and potential for error.
 
--->
+**HOWEVER**. You might be tempted to have separate branches per environment, or even separate repositories per environment, most of us with experience _doing_ this are advising against that. Why?
 
----
-
-# Change Management
-
-## Directories for Environments
-
-<!--
-
-Once again, this may seem to go against the grain, but promoting from one environment to another is usually not as simple as a merge. You can see this in the fact that your scaling is different in different environments, your configurations and secrets are different, etc.
+- Promoting from one environment to another is usually not as simple as a merge
+- Much cannot be promoted from one environment to another: configuration, secrets, scale, etc.
 
 Regardless of what tools you're actually using and what your hosting environment is, consider the layout used for Kustomize and Helm, where you have a "base" directory and then an overlay directory for each environment...
 
-Make sure you consider how you will protect your _production_ environment from changes that you are testing in _staging_ or _development_ environments.
+Make sure you consider how to protect your _production_ environment from changes that you are testing in _staging_ or _development_ environments.
 -->
 
 ---
