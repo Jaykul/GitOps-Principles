@@ -15,50 +15,38 @@ const props = defineProps<{
 </script>
 
 <template>
-  <theme-layout layout-class="image image-left" content-class="relative my-auto h-full grid grid-cols-12">
-    <div
-      v-if="bleed"
-      :class="[
-        equal ? 'col-span-6' : 'col-span-4',
-        'my-auto h-full flex justify-center items-center',
-        leftClass
-      ]"
-      :style="{
-        backgroundImage: `url(${image})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-      }"
-    >
-      <p />
-    </div>
-    <div
-      v-else
-      :class="[
-        'slidev-content',
+  <theme-layout layout-class="image image-left">
+    <div class="content my-auto h-full relative grid grid-cols-12">
+      <div v-if="bleed" :class="[
+            equal ? 'col-span-6' : 'col-span-4',
+            'my-auto h-full flex justify-center items-center',
+            leftClass
+          ]" :style="{
+            backgroundImage: `url(${image})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }">
+        <p />
+      </div>
+      <div v-else :class="[
         equal ? 'col-span-6' : 'col-span-4',
         'my-auto h-full flex justify-center items-center',
         leftClass
       ]">
-        <img
-          :src="image"
-          class="my-auto mx-auto w-auto"
-          :class="imageClass"
-        />
+        <img :src="image" class="my-auto mx-auto w-auto" :class="imageClass" />
       </div>
-    <div
-      :class="[
-        'slidev-content',
-        image ? (equal ? 'col-span-6' : 'col-span-8') : 'col-span-12',
+      <div :class="[
+        'pt2.5rem pa-3.5rem',
+        equal ? 'col-span-6' : 'col-span-8',
         rightClass
-      ]"
-    >
-      <slot />
+      ]">
+        <slot />
+      </div>
     </div>
   </theme-layout>
 </template>
-
-<style>
-.slidev-layout.image .slidev-content {
+<style scoped>
+.content {
   padding: 0;
   background: var(--slidev-theme-image-background);
 }

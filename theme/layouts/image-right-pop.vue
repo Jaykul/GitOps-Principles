@@ -15,31 +15,26 @@ const props = defineProps<{
 
 <template>
   <theme-layout layout-class="image image-right image-right-pop">
-    <div class="content my-auto h-full relative grid grid-cols-12 pa-0">
-      <div
-          :class="[
-            'pt2.5rem pa-3.5rem',
-            image ? 'col-span-6' : 'col-span-12',
-            equal ? 'col-span-6' : 'col-span-8',
-            leftClass
-          ]">
+    <div class="content my-auto h-full relative grid grid-cols-12">
+      <div :class="[
+              'pt2.5rem pa-3.5rem',
+              equal ? 'col-span-6' : 'col-span-8',
+              leftClass
+            ]">
         <slot />
       </div>
-      <div
-          :class="[
+      <div :class="[
             equal ? 'col-span-6' : 'col-span-4',
             'my-auto h-full flex justify-center items-center',
             rightClass
-          ]"
-          :style="{
+          ]" :style="{
             backgroundImage: `url(${image})`,
             backgroundSize: 'cover',
             backgroundPosition: 'right',
           }">
         <div class="h-full w-full" style="backdropFilter: blur(6px)">&nbsp;</div>
         <div class="absolute right-15">
-          <div
-              :style="{
+          <div :style="{
                 boxShadow: '0px 10px 30px rgba(0,0,0,0.7)',
                 zIndex: '5',
               }">
