@@ -22,5 +22,5 @@ const image = computed(() => {
 
 <template>
   <img v-if="image" :src="props.content" :class="props.class" />
-  <div v-else class="mb-0" :class="props.class">{{ props.content }}</div>
+  <div v-else class="mb-0" :class="props.class"><Link class="important-border-none" :to=props.content>{{ props.content }}</Link></div>
 </template>

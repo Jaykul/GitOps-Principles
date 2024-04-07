@@ -8,21 +8,21 @@ High quality recipes are out there for deploying almost anything. Don't start fr
 
 This is a code, configuration and demo-heavy talk, centered around the deployment of a Kubernetes cluster in the cloud and the automatic delivery of software and configuration to that cluster. We'll talk principles, and illustrate with working code the participants can clone from GitHub.
 
-
-
 1. [Agile Manifesto](http://agilemanifesto.org/)
 2. [Principles of Agile Software](http://agilemanifesto.org/principles.html)
-3. [History of DevOps (Atlassian)](https://www.atlassian.com/devops/what-is-devops/history-of-devops)
-4. [DevOps (Wikipedia)](https://en.wikipedia.org/wiki/DevOps)
-5. [DORA](https://dora.dev/)
-6. [Continuous Delivery (Wikipedia)](https://en.wikipedia.org/wiki/Continuous_delivery)
-7. [Continuous Delivery: The Agile Successor (Dr. Dobbs)](https://www.drdobbs.com/architecture-and-design/continuous-delivery-the-agile-successor/240169037)
-8. [Continuous Deployment (IBM)](https://www.ibm.com/topics/continuous-deployment)
-9. [GitOps Principles](https://opengitops.dev/#principles)
-9. [Control Theory](https://en.wikipedia.org/wiki/Control_theory)
-9. [Git best practices: Workflows for GitOps Deployments](https://developers.redhat.com/articles/2022/07/20/git-workflows-best-practices-gitops-deployments#separate_your_repositories)
-9. [The GitOps Guide](https://configu.com/blog/the-gitops-guide-principles-examples-tools-best-practices/#GitOps_Best_Practices)
-
+3. [12 Factor Apps](https://12factor.net/)
+4. [GitOps Principles](https://opengitops.dev/#principles)
+5. [Control Theory](https://en.wikipedia.org/wiki/Control_theory)
+14. [Crash-Only Software](https://www.usenix.org/legacy/events/hotos03/tech/candea.html)
+15. [Crash-only Software: More than meets the eye](https://lwn.net/Articles/191059/)
+6. [History of DevOps (Atlassian)](https://www.atlassian.com/devops/what-is-devops/history-of-devops)
+7. [DevOps (Wikipedia)](https://en.wikipedia.org/wiki/DevOps)
+8. [DORA](https://dora.dev/)
+9. [Continuous Delivery (Wikipedia)](https://en.wikipedia.org/wiki/Continuous_delivery)
+10. [Continuous Delivery: The Agile Successor (Dr. Dobbs)](https://www.drdobbs.com/architecture-and-design/continuous-delivery-the-agile-successor/240169037)
+11. [Continuous Deployment (IBM)](https://www.ibm.com/topics/continuous-deployment)
+12. [Git best practices: Workflows for GitOps Deployments](https://developers.redhat.com/articles/2022/07/20/git-workflows-best-practices-gitops-deployments#separate_your_repositories)
+13. [The GitOps Guide](https://configu.com/blog/the-gitops-guide-principles-examples-tools-best-practices/#GitOps_Best_Practices)
 
 Some of us hold that the original practice of "Agile" included the infrastructure engineering practices, but as "Scrum" became the dominant methodology (it omitted the engineering practices), the movement to automate operations and infrastructure splintered from "Agile" and became "DevOps".
 
@@ -30,11 +30,9 @@ Photo by <a href="https://unsplash.com/@yancymin?utm_content=creditCopyText&utm_
 
 Photo by <a href="https://unsplash.com/@adrienconverse?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Adrien Converse</a> on <a href="https://unsplash.com/photos/a-close-up-of-a-water-droplet-with-a-blue-background-kCrrUx7US04?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
 
-
 Photo by <a href="https://unsplash.com/@fiveamstories?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Alex Shutin</a> on <a href="https://unsplash.com/photos/panoramic-photography-of-mountains-kKvQJ6rK6S4?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
 
 Photo by <a href="https://unsplash.com/@8moments?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Simon Berger</a> on <a href="https://unsplash.com/photos/landscape-photography-of-mountains-twukN12EN7c?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
-
 
 # EXTRA JUNK
 
@@ -62,6 +60,7 @@ After I show you how to go from a git repository to a cluster full of software i
 Building world-class kubernetes clusters from infrastructure as code and GitOps can rebuild a Kubernetes cluster in 30 minutes.
 
 Maybe add some addons from https://www.npmjs.com/
+
 - slidev-addon-rabbit // a customer-facing timer
 - slidev-addon-asciinema
 - slidev-addon-watermark

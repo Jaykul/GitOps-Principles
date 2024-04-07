@@ -1,5 +1,6 @@
 ---
 title: GitOps -- Beyond Patterns and Principles
+level: 1
 info: |
   # GitOps
 
@@ -18,7 +19,7 @@ defaults:
     rightFooter: /images/PSDOGSummit.png
     layout: default
 layout: cover
-background: https://images.unsplash.com/photo-1516670428252-df97bba108d1?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&dl=adrien-converse-kCrrUx7US04-unsplash.jpg&w=1920
+background: images/E2984F049253590FFACD39F2C701E67920AB36C97BEF97AFD491B673980B991A.jpg
 ---
 
 <span class="text-8xl text-white" style="font-weight:700;" >
@@ -37,6 +38,9 @@ background: https://images.unsplash.com/photo-1516670428252-df97bba108d1?ixlib=r
 ---
 layout: image-right-pop
 image: https://HuddledMasses.org/assets/images/avatar.png
+routeAlias: About Me
+title: About Me
+level: 2
 ---
 
 # Joel "Jaykul" Bennett
@@ -65,7 +69,10 @@ I'm Joel Bennett, and I'm from upstate New York by way of the grasslands of Guan
 
 ---
 layout: section
-background: https://images.unsplash.com/photo-1516670428252-df97bba108d1?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&dl=adrien-converse-kCrrUx7US04-unsplash.jpg&w=1920
+background: images/B140E5B2DC52AD0D725F57CA8E7DF9F964A76BC154077A342923084D82A3A92C.jpg
+routeAlias: What is GitOps
+title: What is GitOps?
+level: 2
 ---
 
 # What is GitOps?
@@ -97,7 +104,7 @@ The [OpenGitOps][1] project -- which is a Cloud Native Computing Foundation ([CN
 
 You can follow GitOps Principles even when you're hosting _third party_ software, and not writing your own applications, but it's not relevant if you are building software for others to run. In other words, GitOps Principles apply only to a _strict subset_ of DevOps, and GitOps is not a _replacement_ for DevOps.
 
-I have to admit that _for software as a service_, I do think of GitOps as the next iteration on _Agile_, following _DevOps_, and _Continuous Delivery_. But those terms are so **overused** in recruiting and marketing that sometimes GitOps practitioners actually object to being associated with them, so I'm going to take _just 2 minutes_ to quickly **{NEXT}** go through the historical context before we talk about the definition of GitOps.
+I have to admit that _for software as a service_, I do think of GitOps as an important extension of _Agile_, _DevOps_, and _Continuous Delivery_ -- but it does not **replace** any of them. In fact, these terms are so **overused** in recruiting and marketing that sometimes GitOps practitioners actually object to being associated with them, so I'm going to take _just 2 minutes_ to quickly **{NEXT}** go through the historical context before we talk about the definition of GitOps.
 
 [1]: https://opengitops.dev/
 [2]: https://github.com/cncf/tag-app-delivery/tree/main/gitops-wg
@@ -107,6 +114,9 @@ I have to admit that _for software as a service_, I do think of GitOps as the ne
 
 ---
 rightHeader: What is GitOps?
+routeAlias: Historical Graph
+title: Historical Graph
+level: 3
 ---
 
 # Historical Context
@@ -155,7 +165,9 @@ I want to take _just 2 minutes_ to quickly go through the historical context bef
 
 ---
 rightHeader: What is GitOps?
-clicks: 3
+routeAlias: Historical Context
+title: Historical Context
+level: 3
 ---
 
 # Historical Context
@@ -182,13 +194,17 @@ GitOps is a _set of principles_ for operating and managing software systems.
 
 <!--
 
-Back in 2001 engineers who were doing what they called "agile software development" got together and signed the [_Agile Manifesto_][0]. There were twelve principles behind it, but the first and highest priority was to **satisfy the customer through early and _continuous delivery_ of valuable software.** The core ideas of Agile were about _people_ and their attitudes, and how we manage them in projects: let them self-organize, welcome change, reflect on the results, _adapt_ your processes. The agile manifesto focused on people, and how they _collaborate_, and _communicate_.
+Back in 2001 engineers who were doing what they called "agile software development" got together and signed the [_Agile Manifesto_][0]. There are twelve principles behind it, but the first and "highest priority is to **satisfy the customer through early and _continuous delivery_ of valuable software.**"" The core ideas of Agile are about _people_ and their attitudes, and how to manage people in projects: let them self-organize, welcome change, reflect on the results, _adapt_ your processes. The agile manifesto focuses on people, and how they _collaborate_, and _communicate_.
 
-**{NEXT}** However, as developers sought _agility_ through _continuous delivery_, they began to feel that traditional operations teams and frameworks (like [ITIL][1]) **were** the bottleneck. Thus was born the [DevOps movement][2], which was all about the _cultural change_ necessary to _unify_ software development (Dev) and operation (Ops) organizations. Adopting DevOps meant finding common goals and principles between those two groups, and establishing shared performance indicators so they wouldn't be working at cross-purposes.
+**{NEXT}** However, as developers sought _agility_ through _continuous delivery_, they began to feel that traditional operations teams and frameworks (like [ITIL][1]) **were** the bottleneck. Thus was born the [DevOps movement][2], which is all about the _cultural change_ necessary to _unify_ software development (Dev) and operation (Ops) organizations. Adopting DevOps means finding common goals and principles between those two groups, and establishing shared performance indicators and shared responsibility, so they do not work at cross-purposes.
 
-**{NEXT}** Meanwhile, teams that had not hit bottlenecks started talking more about "Continuous Delivery." They created integrated teams, with developers, testers, and operations engineers together, and focused on increasing the reliability and frequency with which they could build, test, and release software. They found some success by mostly treating _people problems_ as tangential, and focusing on the technical processes required: **automated** build, test, and deployment. Ultimately they began to show success at reducing both _cost_ and _risk_ by enabling small, incremental changes, released frequently. In 2014, Dr. Dobbs magazine actually called Continuous Delivery "The Agile Successor."
+**{NEXT}** Meanwhile, teams that did not hit bottlenecks started talking _more_ about "Continuous Delivery." They created integrated teams, with developers, testers, and operations engineers together, and focused on increasing the reliability and frequency with which they could build, test, and release software. They found a great deal of success by focusing on the _technical processes_ required and  **automating** build, test, and deployment. Ultimately they showed a great deal of success at reducing both _cost_ and _risk_ by enabling small, incremental changes, released frequently. In 2014, Dr. Dobbs magazine actually called Continuous Delivery "The Agile Successor."
 
-**{NEXT}** So that's the backdrop. GitOps principles are derived from modern software operations and they are rooted in these pre-existing and widely adopted best practices. The new term "GitOps" was coined by Weaveworks CEO Alexis Richardson in a blog post in 2017, and through the CNCF (Cloud Native Computing Foundation), it quickly became a term of art which they have worked to define and promote. So maybe what you really wanted to know is: what are these GitOps principles?
+I want to be remind you: **Continuous Delivery** was just _the first principle_ of Agile. In my opinion, it would be ridiculous to decide, a decade later, that Continuous Delivery replaces Agile -- it's almost as if the Scotsman John Boyd *Dunlop*, upon creating a pneumatic tyre in 1888 had said: Hey, I've finally built the perfect wheel, it's the successor to the _motor car_!
+
+Anyway, that's the backdrop.
+
+**{NEXT}** GitOps principles are derived from modern software operations and they are rooted in these pre-existing and widely adopted best practices. The new term "GitOps" was coined by Weaveworks CEO Alexis Richardson in a blog post in 2017, and through the CNCF (Cloud Native Computing Foundation), it quickly became a term of art which they have worked to define and promote. So maybe what you really wanted to know is: what are these GitOps principles?
 
 [0]: http://agilemanifesto.org/
 [1]: https://www.ibm.com/topics/it-infrastructure-library
@@ -201,6 +217,9 @@ layout: two-cols
 layoutClass: open-gitops
 leftClass: col-span-4
 rightClass: col-span-8
+routeAlias: GitOps Principles
+title: GitOps Principles
+level: 3
 ---
 
 ::left::
@@ -268,6 +287,9 @@ layout: image-right
 rightHeader: What is GitOps?
 image: /images/turtles-all-the-way-down.jpg
 bleed: true
+routeAlias: Declarative, Versioned and Immutable
+title: Declarative, Versioned and Immutable
+level: 4
 ---
 
 # Declarative
@@ -317,6 +339,9 @@ layout: image-right
 rightHeader: What is GitOps?
 image: /images/robotic-agents.jpg
 bleed: true
+routeAlias: Software Agents
+title: Software Agents
+level: 4
 ---
 
 # Pulled Automatically
@@ -364,6 +389,9 @@ But let's not confuse things. Using pipelines to trigger Continuous Deployment o
 ---
 layout: default
 rightHeader: What is GitOps?
+routeAlias: GitOps Wants to be More
+title: GitOps Wants to be More
+level: 3
 ---
 
 # GitOps wants to be more
@@ -409,7 +437,7 @@ Here are a couple of questions for you:
 - Is the Octopus Deploy Agent (or the Azure Pipelines agent) a GitOps agent?
 - Is Windows Desired State Configuration (DSC) a GitOps agent?
 
-The Octopus Deploy Agent and the Azure Pipelines Agent are _push_ agents, and they just waits for jobs to be pushed to them. They do not monitor anything.
+The Octopus Deploy Agent and the Azure Pipelines Agent are _push_ agents, and they just waits for jobs to be pushed to them. They do not monitor anything. They also work with _imperative_ instructions, not _declarative_ desired state.
 
 On the other hand, DSC (or the LCM, specifically), has versioned and declarative desired state, which it pulls automatically, and continuously reconciles. It's not a perfect match, because it doesn't actually have multiple versions in the source... but it's very close. At work we've built a system where we manage our desired state as json files, and "build" MOF files (and publish to the Pull server) on commit to main. Each of our servers has the LCM configured in pull mode to continuously monitor and pull new versions....
 
@@ -417,14 +445,162 @@ The **desired state** can include specific measurable results (like performance 
 
 One point to mention here: at this stage, it doesn't really matter _how_ this is achieved. WHether it's event-based monitoring of actual state changes, or polling the state over and over again. Whether the agent runs in the hosting environment, or connects to it remotely. Whether it pulls the desired state directly from git, or there's a pipeline that moves code from source control to a "current version" artifact.
 
-As I said about Infrastructure as Code, there are many tools here, and we've clearly not reached peak GitOps -- picking agents right now comes down to making the right trade-offs for your systems -- you will probably need to combine and layer several of these tools to get where you want to be.
+There are already many tools available in this space, and we've clearly not reached peak GitOps -- picking agents right now comes down to making the right trade-offs for your systems, and you will probably need to combine and layer several tools to get where you want to be.
 
 -->
 
 ---
 layout: section
 contentClass: grid grid-cols-2 gap-1em
-background: https://images.unsplash.com/photo-1516670428252-df97bba108d1?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&dl=adrien-converse-kCrrUx7US04-unsplash.jpg&w=1920
+background: images/1D4DE7B5F033B943E76816266DFA5516449B9CF69FF900CE7D37801E3134D64A.jpg
+routeAlias: Tooling
+title: Tooling
+level: 2
+---
+
+# Tooling
+
+- ## <Link to="Infrastructure As Code">Infrastructure As Code</Link>
+- ## <Link to="Continuous Deployment">Continuous Deployment</Link>
+- ## <Link to="GitOps Agents">GitOps Agents</Link>
+
+---
+rightHeader: Tooling
+routeAlias: Infrastructure As Code
+title: Infrastructure As Code
+level: 3
+---
+
+# Infrastructure As Code
+## The Code Should be _Declarative_
+## The Tools Should be _Idempotent_
+
+- [Terraform](https://www.terraform.io/) by Hashicorp, and [OpenTofu](https://opentofu.org/) by Linux Foundation
+- [Pulumi](https://www.pulumi.com/) supports Yaml -- but also C#, Python, Go, TypeScript.
+- [Idem](https://www.idemproject.io/) by VMWare (infrastructure as "data" = yaml)
+- [Radius](https://radapp.io/) does Bicep **and** Terraform
+- [Bicep](https://github.com/Azure/bicep/) / Arm / [CloudFormation](https://aws.amazon.com/cloudformation/)
+
+<!--
+
+There are many options here, and I'm not going to recommend one over another.
+
+Presumably you've heard of most of these, the newcomers are Radius and Idem.
+
+VMWare claims Idem is the first "infrastructure as data" tool. Of course, their "data" comes in the form of yaml files, so really they're very close to the same as all the others here. I guess I don't care what they call it. Idem is interesting partly because it has a `describe` mode, which generates the yaml for you, but it's quite rough around the edges right now for getting started.
+
+Microsoft's Radius is interesting because it provides extra abstraction layers. Developers write code in _either_ Bicep or Terraform, and ask for a high-level "document database" object. When they "deploy" that locally, it spins up MongoDb in a container, but deployed to AWS it's a Amazon DocumentDB, and in Azure it's CosmosDB. The idea is that developers pick from "recipes" that the operations team creates.
+
+-->
+
+---
+rightHeader: Tooling
+routeAlias: Continuous Deployment
+title: Continuous Deployment
+level: 3
+---
+
+# Build, Test, Package
+
+Every source-hosting platform has a CI/CD system...
+
+<div class="columns grid grid-auto-flow-col gap-1em grid-rows-1">
+
+<div>
+
+- GitLab
+- GitHub Actions
+- Azure Pipelines
+
+</div><div>
+
+And there are many, many others.
+
+- Bamboo (BitBucket)
+- CircleCI
+- TeamCity
+- Travis CI
+- Jenkins
+
+</div><div>
+
+<v-click>
+
+## &nbsp;
+
+Some even run in Kubernetes:
+
+- [GitLab **Agent**](https://docs.gitlab.com/ee/user/clusters/agent/ci_cd_workflow.html)
+- [Tekton](https://tekton.dev/)
+- [Jenkins X](https://jenkins-x.io/)
+- [Skaffold](https://skaffold.dev/)
+
+</v-click>
+
+</div>
+</div>
+
+<!--
+
+If you thought there were a lot of tools for Infrastructure as Code, you're going to be overwhelmed by the number of tools available for Continuous Delivery. Remember that in GitOps, Continuous Delivery is usually just the build, unit testing, and creation of a versioned package. The release (and deployment) is handled by the GitOps tooling.
+
+Obviously, the easy choice is the one that comes with your source control system. Normally we'd only look at the others if we had a specific need. And as with the IaC tools, I want to mention a few that are newer:
+
+**{{NEXT}}**
+
+First, you've probably all heard of GitLab, but they have gone all-in with support for GitOps on Kubernetes, and have integrated Flux, as well as a GitLab Agent for CI/CD that runs directly on Kubernetes. They have rolled their own, so this is a particularly interesting approach if you're already familiar with their build system. Now, you can run a build and CI/CD pipeline from inside your clusters, produce and publish a container, generate a release and push to your GitOps repo, hen use Flux to deploy and reconcile, all within their supported ecosystem.
+
+Second, Jenkins-X, a re-imagining of Jenkins built on top of Tekton, which is really just a framework for creating custom CI/CD systems which run on Kubernetes. This means you can build, test, and deploy across cloud providers and on-premise, promote changes from one environment to another via GitOps and pull requests, etc. Jenkins X does the extra work to integrate with your git provider and comments on your PRs, and update you on the status of the pipelines.
+
+-->
+
+---
+rightHeader: Tooling
+routeAlias: GitOps Agents
+title: GitOps Agents
+level: 3
+---
+
+# GitOps Agents
+
+- Flux
+- ArgoCD
+- Fleet
+
+<!--
+
+Obviously, GitOps is the new kid on the block here, and I'm really only aware of three tools that actually do GitOps (and I have not tested **Fleet**, by Rancher (SUSE), yet). There are a few _commercial_ tools building on top of these.
+
+Obviously we already mentioned GitLab is building their GitOps tooling on top of Flux now, as are Azure (AKS /Azure GitOps) and AWS (EKS Anywhere). Harness is building on top of ArgoCD. There are others that are offering consulting services (like the now-defunct Weaveworks and ControlPlane).
+
+Alright. Let's take a look at a couple of these tools in action.
+
+-->
+
+
+
+
+---
+layout: section
+contentClass: grid grid-cols-2 gap-1em
+background: images/1156B356C54605DE91835100F2FA7C865F8441711E24B60E9B722ED72EE572FF.jpg
+routeAlias: Show and Tell
+title: Show and Tell
+level: 2
+---
+
+# Show and Tell
+
+- ## [AKS-Bicep](https://github.com/poshcode/aks-bicep)
+- ## [Cluster](https://github.com/poshcode/cluster)
+
+---
+layout: section
+contentClass: grid grid-cols-2 gap-1em
+background: images/B08599196B1133A13BF7F4A41EAE96841A9A6EBF79CB7121ACB8A3961469DFF2.jpg
+routeAlias: Best Practices
+title: Best Practices
+level: 2
 ---
 
 <div class="col-span-2">
@@ -435,11 +611,11 @@ Or, how do I GitOps?
 
 </div>
 
-## Standardization
+## <Link to="Standardization">Standardization</Link>
 
-## Twelve-Factor Apps
+## <Link to="12 Factor App">Twelve-Factor Apps</Link>
 
-## Change Management
+## <Link to="Change Management">Change Management</Link>
 
 <!--
 
@@ -448,13 +624,14 @@ We **definitely** don't have time for a full deep dive into best practices, but 
 Remember, GitOps basically assumes you're already doing DevOps. That you have a culture of collaboration and shared goals and responsibility, with a focus on automation and repeatability.
 -->
 
-
 ---
 rightHeader: Best Practices
+routeAlias: Standardization
+title: Standardization
+level: 3
 ---
 
 # Standardization
-
 
 In short, you can't control a train or a ship with the autopilot for a Tesla.
 
@@ -470,7 +647,6 @@ In short, you can't control a train or a ship with the autopilot for a Tesla.
 
 </v-click>
 
-
 <!--
 
 Let's talk about this as control theory. Let's say you're building a thermostat or a cruise control. Imagine I built an auto pilot for a sports car, and then tried to use it to control my fleet of tractor trailers. Or Imagine we built a thermostat for forced-air industrial HVAC systems in gyms. Are we going to be able to use that to control the heat in an multi-floor apartment building that uses steam radiators?  No. You'll overheat the apartments every time, and flip back and forth between too hot and too cold, and broil the upstairs and freeze the downstairs.
@@ -485,6 +661,9 @@ For each type of system, all the teams that interact with it need to build custo
 
 ---
 rightHeader: Best Practices
+routeAlias: Best of Breed Tools
+title: Best of Breed Tools
+level: 3
 ---
 
 # Standardization
@@ -513,7 +692,6 @@ rightHeader: Best Practices
 - Code-based
 - Declarative
 - Idempotent
-
 
 </v-click>
 </div><div>
@@ -567,6 +745,9 @@ How do you track dependencies. I don't mean just binaries you need at build time
 ---
 layoutClass: columns grid-rows-5
 rightHeader: Best Practices
+routeAlias: 12 Factor App
+title: The Twelve-Factor App
+level: 3
 ---
 <div class="col-span-3">
 
@@ -578,73 +759,73 @@ rightHeader: Best Practices
 
 <div>
 
-### I. Codebase
+### <Link to="codebase">I. Codebase</Link>
 
 One codebase tracked in revision control, many deploys
 
 </div><div>
 
-### II. Dependencies
+### II. <Link to="dependencies">Dependencies</Link>
 
 Explicitly declare and isolate dependencies
 
 </div><div>
 
-### III. Config
+### III. <Link to="config">Config</Link>
 
 Store config in the environment
 
 </div><div>
 
-### IV. Backing services
+### IV. <Link to="resources">Backing services</Link>
 
 Treat backing services as attached resources
 
 </div><div>
 
-### V. Build, release, run
+### V. <Link to="build">Build, release, run</Link>
 
 Strictly separate build and run stages
 
 </div><div>
 
-### VI. Processes
+### VI. <Link to="processes">Processes</Link>
 
 Execute the app as one or more stateless processes
 
 </div><div>
 
-### VII. Port binding
+### VII. <Link to="port-binding">Port binding</Link>
 
 Export services via port binding
 
 </div><div>
 
-### VIII. Concurrency
+### VIII. <Link to="concurrency">Concurrency</Link>
 
 Scale out via the process model
 
 </div><div>
 
-### IX. Disposability
+### IX. <Link to="disposability">Disposability</Link>
 
 Maximize robustness with fast startup and graceful shutdown
 
 </div><div>
 
-### X. Dev/prod parity
+### X. <Link to="parity">Dev/prod parity</Link>
 
 Keep development, staging, and production as similar as possible
 
 </div><div>
 
-### XI. Logs
+### XI. <Link to="logs">Logs</Link>
 
 Treat logs as event streams
 
 </div><div>
 
-### XII. Admin processes
+### XII. <Link to="admin">Admin processes</Link>
 
 Run admin/management tasks as one-off processes
 
@@ -667,6 +848,9 @@ I think this is also a great example of why GitOps isn't something the Ops or "D
 ---
 layout: two-cols
 rightHeader: Best Practices
+routeAlias: Change Management
+title: Change Management
+level: 3
 ---
 
 ::header::
@@ -705,6 +889,8 @@ Don't use mono-repos or branch-per-environment
 <!--
 I'm not a big fan of mono-repos in general, but for GitOps we have a few special reasons for separating our infrastructure, apps, and configuration repositories.
 
+**{NEXT}**
+
 - The primary reason is to keep the versioning separate, and avoid triggering CI/CD pipelines for config or infrastructure changes. You don’t want a simple configuration change (like scaling a deployment from three to four replicas) to trigger a CI/CD rebuild and test of your application (especially not if that's required prior to being able to merge the change).
 - You also don't want to hold up CI/CD builds with the change management approvals you might need for infrastructure changes, and one of the nice things about using git for infrastructure and configuration is that we can use git's built-in features for approvals and change tracking.
 - You may have different teams responsible for infrastructure and application code or configuration, and different code-review or approval processes for code versus infrastructure or configuration.
@@ -724,3 +910,448 @@ Regardless of what tools you're actually using and what your hosting environment
 Make sure you consider how to protect your _production_ environment from changes that you are testing in _staging_ or _development_ environments.
 
 -->
+
+---
+layout: section
+background: images/1D4DE7B5F033B943E76816266DFA5516449B9CF69FF900CE7D37801E3134D64A.jpg
+routeAlias: Background
+title: Background
+level: 2
+---
+
+# Background
+
+---
+rightHeader: Background
+routeAlias: Agile Manifesto
+title: Agile Manifesto
+level: 3
+---
+
+# Agile Manifesto [(.org)](http://agilemanifesto.org/)
+
+We are uncovering better ways of developing
+software by doing it and helping others do it.
+Through this work we have come to value:
+
+#### **Individuals and interactions** over processes and tools
+
+#### **Working software** over comprehensive documentation
+
+#### **Customer collaboration** over contract negotiation
+
+#### **Responding to change** over following a plan
+
+That is, while there is value in the items on
+the right, we value the items on the left more
+
+---
+layoutClass: columns grid-rows-4
+rightHeader: Background
+routeAlias: Agile Principles Part 1
+title: Principles behind the Agile Manifesto (1/2)
+level: 4
+---
+<div class="col-span-3">
+
+# [Principles][1] behind the [Agile Manifesto][2] (1/2)
+
+</div>
+
+<!-- <v-clicks> -->
+
+Our highest priority is to satisfy the customer through early and continuous delivery of valuable software.
+
+Welcome changing requirements, even late in
+development. Agile processes harness change for
+the customer's competitive advantage.
+
+Deliver working software frequently, from a
+couple of weeks to a couple of months, with a
+preference to the shorter timescale.
+
+Business people and developers must work
+together daily throughout the project.
+
+Build projects around motivated individuals.
+Give them the environment and support they need,
+and trust them to get the job done.
+
+The most efficient and effective method of
+conveying information to and within a development
+team is face-to-face conversation.
+
+[1]: http://agilemanifesto.org/principles.html
+[2]: http://agilemanifesto.org/
+
+---
+layoutClass: columns grid-rows-4
+rightHeader: Background
+routeAlias: Agile Principles Part 2
+title: Principles behind the Agile Manifesto (2/2)
+level: 4
+---
+
+<div class="col-span-3">
+
+# Principles behind the Agile Manifesto (2/2)
+
+</div>
+
+Working software is the primary measure of progress.
+
+Agile processes promote sustainable development.
+The sponsors, developers, and users should be able
+to maintain a constant pace indefinitely.
+
+Continuous attention to technical excellence
+and good design enhances agility.
+
+Simplicity--the art of maximizing the amount
+of work not done--is essential.
+
+The best architectures, requirements, and designs
+emerge from self-organizing teams.
+
+At regular intervals, the team reflects on how
+to become more effective, then tunes and adjusts
+its behavior accordingly.
+
+---
+layoutClass: columns grid-rows-5
+rightHeader: Best Practices
+routeAlias: 12 Factor App (Redux)
+title: The Twelve-Factor App (Redux)
+level: 3
+---
+<div class="col-span-3">
+
+# The Twelve-Factor App ([12factor.net](https://12factor.net/))
+
+</div>
+
+<!-- <v-clicks> -->
+
+<div>
+
+### <Link to="codebase">I. Codebase</Link>
+
+One codebase tracked in revision control, many deploys
+
+</div><div>
+
+### II. <Link to="dependencies">Dependencies</Link>
+
+Explicitly declare and isolate dependencies
+
+</div><div>
+
+### III. <Link to="config">Config</Link>
+
+Store config in the environment
+
+</div><div>
+
+### IV. <Link to="resources">Backing services</Link>
+
+Treat backing services as attached resources
+
+</div><div>
+
+### V. <Link to="build">Build, release, run</Link>
+
+Strictly separate build and run stages
+
+</div><div>
+
+### VI. <Link to="processes">Processes</Link>
+
+Execute the app as one or more stateless processes
+
+</div><div>
+
+### VII. <Link to="port-binding">Port binding</Link>
+
+Export services via port binding
+
+</div><div>
+
+### VIII. <Link to="concurrency">Concurrency</Link>
+
+Scale out via the process model
+
+</div><div>
+
+### IX. <Link to="disposability">Disposability</Link>
+
+Maximize robustness with fast startup and graceful shutdown
+
+</div><div>
+
+### X. <Link to="parity">Dev/prod parity</Link>
+
+Keep development, staging, and production as similar as possible
+
+</div><div>
+
+### XI. <Link to="logs">Logs</Link>
+
+Treat logs as event streams
+
+</div><div>
+
+### XII. <Link to="admin">Admin processes</Link>
+
+Run admin/management tasks as one-off processes
+
+</div>
+
+<!--
+
+My personal favorite example of standardization is the Twelve-Factor app!
+
+These factors are a methodology for writing software that works well in software as a service environments. 12 Factor Apps are designed to be _declarative_, _portable_, _scalable_, and _concurrent_. Following these factors tends to make it so that the operation of the apps doesn't even depend on the language or framework used to build them.
+
+I actually consider two of these "factors" to be required for GitOps, regardless of your hosting environment.
+
+But if you're doing GitOps with microservices, and especially on Kubernetes, I consider almost all of them to be mandatory.
+
+I think this is also a great example of why GitOps isn't something the Ops or "DevOps" teams can pull off on their own. Obviously, you need developers, software architects, and engineering teams to all agree on these sorts of standards.
+
+-->
+
+
+---
+rightHeader: 12 Factor App
+routeAlias: codebase
+title: Codebase
+level: 4
+---
+
+# 1. Codebase
+
+### There is always a one-to-one correlation between the codebase and the app {.resize}
+
+- If there are multiple codebases, it's not an app – it's a distributed system.
+- Each component in a distributed system is an app, and each can individually comply with twelve-factor.
+- Multiple apps sharing the same code is a violation of twelve-factor.
+- Factor shared code into libraries which can be included through the <Link to="dependencies">dependency manager</Link>.
+
+A deploy is a running instance of the app.
+
+There is only one codebase per app, but there will be many deploys of the app: production, staging, etc.
+
+The codebase is the same across all deploys, although different _versions_ may be active in each deploy.
+
+---
+rightHeader: 12 Factor App
+routeAlias: dependencies
+title: Dependencies
+level: 4
+---
+
+# 2. Dependencies
+
+### Explicitly declare and isolate dependencies
+
+A twelve-factor app never relies on implicit existence of system-wide packages or system tools.
+
+It **declares all dependencies**, completely and exactly, via a dependency declaration manifest, and uses **dependency isolation** to ensure no implicit dependencies "leak in" from the surrounding system.
+
+One benefit of explicit dependency declaration is that it simplifies setup for developers new to the app.
+
+---
+rightHeader: 12 Factor App
+routeAlias: config
+title: Config
+level: 4
+---
+
+# 3. Config
+
+### Store config in the environment
+
+An app’s config is everything that is likely to vary between deploys (staging, production, developer environments, etc). This includes:
+
+- Resource handles to the database, cache, and other backing services
+- Credentials to external services such as Amazon S3 or Twitter
+- Per-deploy values such as the canonical hostname for the deploy
+
+One litmus test for whether an app has all config correctly factored out of the code is whether the codebase could be made open source at any moment, without compromising any credentials.
+
+The twelve-factor app stores config in environment variables. These are easy to change, and hard to accidentally commit. They are a language- and OS-agnostic standard.
+
+These variables are not grouped into sets or environments, but instead are granular and managed independently for each deployment.
+
+---
+rightHeader: 12 Factor App
+routeAlias: services
+title: Backing Services
+level: 4
+---
+
+# 4. Backing Services
+
+### Treat backing services as attached resources
+
+A backing service is any service the app consumes over the network as part of its normal operation.
+
+Examples include:
+
+- Datastores (such as SQL, or MongoDB)
+- Messaging/queueing systems (such as RabbitMQ or Service Bus)
+- SMTP services for email (such as Postfix)
+- Caching systems (such as Memcached or Redis)
+
+Some are locally managed, others are third-party services. The code for a twelve-factor app makes no distinction between local and third-party services. To the app, both are _attached resources_, accessed via a URL or other locator and credentials stored in the config. Different instances of these resources can be swapped out without any changes to the app's code.
+
+---
+rightHeader: 12 Factor App
+routeAlias: build
+title: Build, Release, Run
+level: 4
+---
+
+# 5. Build, Release, Run
+
+### Strictly separate build and run stages
+
+- The **build stage** is a transform which converts a code repo into an executable bundle known as a build. This might be a single binary, a package, or a container image. The build fetches vendors dependencies and compiles binaries and assets.
+- The **release stage** takes the build produced by the build stage and combines it with the deploy's current config. The resulting release is ready for execution...
+- The **run stage** runs the app in the execution environment, by launching some set of the app’s processes against a selected release.
+
+This means it's impossible to make changes to the _code_ or the _config_ at runtime, because you can't propagate those changes back to the build or release stage.
+
+Any change to the code creates a new build. Any change to the config creates a new release.
+
+---
+rightHeader: 12 Factor App
+routeAlias: processes
+title: Processes
+level: 4
+---
+
+# 6. Processes
+
+### Execute the app as one or more stateless processes
+
+Twelve-factor processes are stateless and share-nothing. Any data that needs to persist must be stored in a stateful backing service, typically a database.
+
+The twelve-factor app never assumes that anything cached in memory or on disk will be available on a future request or job – with many processes of each type running, chances are high that a future request will be served by a different process.
+
+The memory space or filesystem of the process can be only be used as a brief, single-transaction cache. The twelve-factor app never assumes that anything cached in memory or disk will be available for a future request or job. Even when running only one process, a restart will usually wipe out all local (e.g., memory and filesystem) state.
+
+Sticky sessions are a violation of twelve-factor and should never be used or relied upon. Session state data is a good candidate for a datastore that offers time-expiration, such as Memcached or Redis.
+
+---
+rightHeader: 12 Factor App
+routeAlias: port-binding
+title: Port Binding
+level: 4
+---
+
+# 7. Port Binding
+
+### Export services via port binding
+
+Twelve-factor apps are completely self-contained, and don't rely on the runtime injections of a webserver to create a web-facing service. The web app exports HTTP as a service by binding to a port, and listening to requests coming in on that port.
+
+Typically, the web server is a library that's linked using dependency injection, but it happens entirely in user space, within the app code. The contract with the execution environment is binding the port to serve requests.
+
+This approach means that one app can become the backing service for another app, by providing the URL to the backing app as a resource handle in the config for the consuming app.
+
+---
+rightHeader: 12 Factor App
+routeAlias: concurrency
+title: Concurrency
+level: 4
+---
+
+# 8. Concurrency
+
+### Scale out via the process model
+
+In short, the process is the first class citizen. It takes strong cues from the unix process model for running service daemons, assigning each type of work to a process type. Twelve-factor app processes should never "daemonize" themselves, or write PID files. They rely on the operating system's process manager to manage output streams, respond to crashed processes, and handle user-initiated restarts and shutdowns.
+
+The application must be able to span multiple processes running on multiple physical machines.
+
+The share-nothing, horizontally partitionable nature of twelve-factor app [processes](/processes) means that adding more concurrency is a simple and reliable operation.
+
+---
+rightHeader: 12 Factor App
+routeAlias: disposability
+title: Disposability
+level: 4
+---
+
+# 9. Disposability
+
+### Maximize robustness with fast startup and graceful shutdown
+
+The twelve-factor app’s [processes](/processes) are disposable, meaning they can be started or stopped at a moment’s notice. This facilitates fast elastic scaling, rapid deployment of code or config changes, and robustness of production deploys.
+
+Processes should strive to **minimize startup time.**
+
+Processes shut down gracefully when they receive a SIGTERM signal.
+
+- For web processes: stop listening, finish any current request, and then exit.
+- For worker processes: return the current job to the work queue and then exit.
+
+Processes should also be robust against sudden death. The app must be architected to handle unexpected non-graceful termination. Crash-only design is the logical extreme.
+
+---
+rightHeader: 12 Factor App
+routeAlias: parity
+title: Dev/prod parity
+level: 4
+---
+
+# 10. Dev/prod parity
+
+### Keep development, staging, and production as similar as possible
+
+The old-school (pre-DevOps) way of thinking led to gaps (in time, personnel, and tooling) between development and production. The twelve-factor app is designed for continuous deployment by keeping the gap between development and production small.
+
+- Make the time gap small by continuous deployment.
+- Make the personnel gap small by following DevOps practices, and involving developers in deployment and monitoring.
+- Make the tools gap small by keep development and production as similar as possible.
+
+Resist the urge to use different backing services between development and production. Even tiny incompatibilities between environments create friction that disincentivizes continuous deployment.
+
+In the modern era, declarative provisioning and light-weight virtual environments have brought down the cost and complication of using the same services and tools across all environments.
+
+---
+rightHeader: 12 Factor App
+routeAlias: logs
+title: Logs
+level: 4
+---
+
+# 11. Logs
+
+### Treat logs as event streams
+
+Logs are the stream of aggregated, time-ordered events collected from the output streams of all running processes and backing services. They are typically a text format with one event per line, and have no fixed beginning or end, but flow continuously as long as the app is operating.
+
+A twelve-factor app never concerns itself with routing or storage of its output stream. It should not attempt to write to or manage log files. Each running process writes its event stream, unbuffered, to stdout. During local development, the developer will view this stream in the foreground of their terminal to observe the app’s behavior.
+
+In staging or production deploys, each process' stream will be captured by the execution environment, collated together with all other streams from the app, and routed to one or more final destinations for viewing and long-term archival.
+
+---
+rightHeader: 12 Factor App
+routeAlias: admin
+title: Admin processes
+level: 4
+---
+
+# 12. Admin processes
+
+### Run admin/management tasks as one-off processes
+
+- Running database migrations
+- Running one-time scripts to import, export, or transform data
+- Running a console shell to run arbitrary code or inspect the app models against the live database.
+
+One-off admin processes should be run in an identical environment as the regular long-running processes of the app. They run against a release, using the same codebase and config as any process run against that release. Admin code must ship with application code to avoid synchronization issues.
+
+Twelve-factor strongly favors frameworks which provide a REPL shell out of the box, and make it easy to run one-off scripts. In a local deploy, developers invoke one-off admin processes by a direct shell command inside the app’s checkout directory. In a production deploy, developers can use ssh or other remote command execution mechanism provided by that deploy’s execution environment to run such a process.
