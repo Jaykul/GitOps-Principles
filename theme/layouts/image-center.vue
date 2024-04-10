@@ -9,14 +9,15 @@ const props = defineProps<{
 </script>
 
 <template>
-  <theme-layout class="relative">
-    <div class="col-span-12 m-auto h-full w-full intro grid grid-cols-12">
-      <div class="text-center">
+  <theme-layout layout-class="relative">
+      <div class="content my-auto col-span-10 py-0 col-start-2">
         <slot />
-      </div>
-      <div v-if="image" class="m-auto w-8/12 rounded-lg manual-shadow">
-        <img :src="image" class="rounded-lg" />
-      </div>
-    </div>
+
+        <div class="col-span-12 my-auto h-full w-full grid grid-cols-12">
+          <div v-if="image" class="my-auto manual-shadow col-span-10 col-start-2">
+            <img :src="image" />
+          </div>
+        </div>
+      </div>s
   </theme-layout>
 </template>

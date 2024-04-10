@@ -16,7 +16,7 @@ theme: ./theme
 colorSchema: light
 defaults:
     leftFooter: /images/cc-by-sa.svg
-    rightFooter: /images/PSDOGSummit.png
+    rightFooter: /images/PSHSummit.png
     layout: default
 layout: cover
 background: images/E2984F049253590FFACD39F2C701E67920AB36C97BEF97AFD491B673980B991A.jpg
@@ -34,6 +34,16 @@ background: images/E2984F049253590FFACD39F2C701E67920AB36C97BEF97AFD491B673980B9
 <div>
     April 8-11, <span class="text-blend">2024</span>
 </div>
+
+---
+layout: image-center
+image: images/summit_sponsor_updated_4.png
+title: Summit Sponsors
+routeAlias: Summit Sponsors
+level: 1
+---
+
+## Thanks as always to our sponsors!
 
 ---
 layout: image-right-pop
@@ -461,7 +471,7 @@ level: 2
 # Tooling
 
 - ## <Link to="Infrastructure As Code">Infrastructure As Code</Link>
-- ## <Link to="Continuous Deployment">Continuous Deployment</Link>
+- ## <Link to="Continuous Delivery">Continuous Delivery</Link>
 - ## <Link to="GitOps Agents">GitOps Agents</Link>
 
 ---
@@ -495,12 +505,13 @@ Microsoft's Radius is interesting because it provides extra abstraction layers. 
 
 ---
 rightHeader: Tooling
-routeAlias: Continuous Deployment
-title: Continuous Deployment
+routeAlias: Continuous Delivery
+title: Continuous Delivery
 level: 3
 ---
 
-# Build, Test, Package
+# Continuous Delivery
+## Build, Test, Package
 
 Every source-hosting platform has a CI/CD system...
 
@@ -567,13 +578,21 @@ level: 3
 - ArgoCD
 - Fleet
 
+<v-click>
+<img src="images/CNCFLandscape.png" alt="CNCF Landscape" />
+</v-click>
+
 <!--
 
 Obviously, GitOps is the new kid on the block here, and I'm really only aware of three tools that actually do GitOps (and I have not tested **Fleet**, by Rancher (SUSE), yet). There are a few _commercial_ tools building on top of these.
 
 Obviously we already mentioned GitLab is building their GitOps tooling on top of Flux now, as are Azure (AKS /Azure GitOps) and AWS (EKS Anywhere). Harness is building on top of ArgoCD. There are others that are offering consulting services (like the now-defunct Weaveworks and ControlPlane).
 
-Alright. Let's take a look at a couple of these tools in action.
+**{{NEXT}}**
+
+The CNCF Landscape you saw yesterday in the keynote has a section for "Continuous Integration and Delivery" but of all these listed, only the ones I've already mentioned are working on GitOps tools.
+
+Well, let's take a look at some tools in action.
 
 -->
 
@@ -891,7 +910,7 @@ I'm not a big fan of mono-repos in general, but for GitOps we have a few special
 
 **{NEXT}**
 
-- The primary reason is to keep the versioning separate, and avoid triggering CI/CD pipelines for config or infrastructure changes. You don’t want a simple configuration change (like scaling a deployment from three to four replicas) to trigger a CI/CD rebuild and test of your application (especially not if that's required prior to being able to merge the change).
+- The primary reason is to keep the versioning separate, and avoid triggering CI/CD pipelines for config or infrastructure changes. You don't want a simple configuration change (like scaling a deployment from three to four replicas) to trigger a CI/CD rebuild and test of your application (especially not if that's required prior to being able to merge the change).
 - You also don't want to hold up CI/CD builds with the change management approvals you might need for infrastructure changes, and one of the nice things about using git for infrastructure and configuration is that we can use git's built-in features for approvals and change tracking.
 - You may have different teams responsible for infrastructure and application code or configuration, and different code-review or approval processes for code versus infrastructure or configuration.
 
@@ -1132,7 +1151,7 @@ level: 4
 
 ### There is always a one-to-one correlation between the codebase and the app {.resize}
 
-- If there are multiple codebases, it's not an app – it's a distributed system.
+- If there are multiple code bases, it's not an app -- it's a distributed system.
 - Each component in a distributed system is an app, and each can individually comply with twelve-factor.
 - Multiple apps sharing the same code is a violation of twelve-factor.
 - Factor shared code into libraries which can be included through the <Link to="dependencies">dependency manager</Link>.
@@ -1171,7 +1190,7 @@ level: 4
 
 ### Store config in the environment
 
-An app’s config is everything that is likely to vary between deploys (staging, production, developer environments, etc). This includes:
+An app's config is everything that is likely to vary between deploys (staging, production, developer environments, etc). This includes:
 
 - Resource handles to the database, cache, and other backing services
 - Credentials to external services such as Amazon S3 or Twitter
@@ -1218,7 +1237,7 @@ level: 4
 
 - The **build stage** is a transform which converts a code repo into an executable bundle known as a build. This might be a single binary, a package, or a container image. The build fetches vendors dependencies and compiles binaries and assets.
 - The **release stage** takes the build produced by the build stage and combines it with the deploy's current config. The resulting release is ready for execution...
-- The **run stage** runs the app in the execution environment, by launching some set of the app’s processes against a selected release.
+- The **run stage** runs the app in the execution environment, by launching some set of the app's processes against a selected release.
 
 This means it's impossible to make changes to the _code_ or the _config_ at runtime, because you can't propagate those changes back to the build or release stage.
 
@@ -1258,7 +1277,7 @@ Twelve-factor apps are completely self-contained, and don't rely on the runtime 
 
 Typically, the web server is a library that's linked using dependency injection, but it happens entirely in user space, within the app code. The contract with the execution environment is binding the port to serve requests.
 
-This approach means that one app can become the backing service for another app, by providing the URL to the backing app as a resource handle in the config for the consuming app.
+This approach means that one app can become the backing service for another app, by providing the URL to the backing app as a resource handle in the config for the consuming app
 
 ---
 rightHeader: 12 Factor App
@@ -1288,7 +1307,7 @@ level: 4
 
 ### Maximize robustness with fast startup and graceful shutdown
 
-The twelve-factor app’s [processes](/processes) are disposable, meaning they can be started or stopped at a moment’s notice. This facilitates fast elastic scaling, rapid deployment of code or config changes, and robustness of production deploys.
+The twelve-factor app's [processes](/processes) are disposable, meaning they can be started or stopped at a moment's notice. This facilitates fast elastic scaling, rapid deployment of code or config changes, and robustness of production deploys.
 
 Processes should strive to **minimize startup time.**
 
@@ -1333,7 +1352,7 @@ level: 4
 
 Logs are the stream of aggregated, time-ordered events collected from the output streams of all running processes and backing services. They are typically a text format with one event per line, and have no fixed beginning or end, but flow continuously as long as the app is operating.
 
-A twelve-factor app never concerns itself with routing or storage of its output stream. It should not attempt to write to or manage log files. Each running process writes its event stream, unbuffered, to stdout. During local development, the developer will view this stream in the foreground of their terminal to observe the app’s behavior.
+A twelve-factor app never concerns itself with routing or storage of its output stream. It should not attempt to write to or manage log files. Each running process writes its event stream, unbuffered, to stdout. During local development, the developer will view this stream in the foreground of their terminal to observe the app's behavior.
 
 In staging or production deploys, each process' stream will be captured by the execution environment, collated together with all other streams from the app, and routed to one or more final destinations for viewing and long-term archival.
 
@@ -1354,4 +1373,34 @@ level: 4
 
 One-off admin processes should be run in an identical environment as the regular long-running processes of the app. They run against a release, using the same codebase and config as any process run against that release. Admin code must ship with application code to avoid synchronization issues.
 
-Twelve-factor strongly favors frameworks which provide a REPL shell out of the box, and make it easy to run one-off scripts. In a local deploy, developers invoke one-off admin processes by a direct shell command inside the app’s checkout directory. In a production deploy, developers can use ssh or other remote command execution mechanism provided by that deploy’s execution environment to run such a process.
+Twelve-factor strongly favors frameworks which provide a REPL shell out of the box, and make it easy to run one-off scripts. In a local deploy, developers invoke one-off admin processes by a direct shell command inside the app's checkout directory. In a production deploy, developers can use ssh or other remote command execution mechanism provided by that deploy's execution environment to run such a process.
+
+
+---
+rightHeader: About Me
+routeAlias: Links
+title: Links
+level: 2
+---
+
+# Sources
+
+0. [This Presentation](https://github.com/Jaykul/DevOps2024)
+1. [AKS-Bicep](https://github.com/PoshCode/AKS-Bicep)
+2. [Cluster](https://github.com/PoshCode/Cluster)
+3. [Agile Manifesto](http://agilemanifesto.org/)
+4. [Principles of Agile Software](http://agilemanifesto.org/principles.html)
+5. [12 Factor Apps](https://12factor.net/)
+6. [GitOps Principles](https://opengitops.dev/#principles)
+7. [Control Theory](https://en.wikipedia.org/wiki/Control_theory)
+8. [Crash-Only Software](https://www.usenix.org/legacy/events/hotos03/tech/candea.html)
+9. [Crash-only Software: More than meets the eye](https://lwn.net/Articles/191059/)
+10. [History of DevOps (Atlassian)](https://www.atlassian.com/devops/what-is-devops/history-of-devops)
+11. [DevOps (Wikipedia)](https://en.wikipedia.org/wiki/DevOps)
+12. [DORA](https://dora.dev/)
+13. [Continuous Delivery (Wikipedia)](https://en.wikipedia.org/wiki/Continuous_delivery)
+14. [Continuous Delivery: The Agile Successor (Dr. Dobbs)](https://www.drdobbs.com/architecture-and-design/continuous-delivery-the-agile-successor/240169037)
+15. [Continuous Deployment (IBM)](https://www.ibm.com/topics/continuous-deployment)
+16. [Git best practices: Workflows for GitOps Deployments](https://developers.redhat.com/articles/2022/07/20/git-workflows-best-practices-gitops-deployments#separate_your_repositories)
+17. [The GitOps Guide](https://configu.com/blog/the-gitops-guide-principles-examples-tools-best-practices/#GitOps_Best_Practices)
+18. [CNCF Landscape](https://landscape.cncf.io/)

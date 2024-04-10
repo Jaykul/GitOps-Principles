@@ -17,11 +17,17 @@
 
     },
     "cSpell.words": [
+        "disincentivizes",
         "Dobbs",
         "emojione",
+        "gitops",
+        "HVAC",
         "ITIL",
+        "Kustomize",
         "Pulumi",
+        "Skaffold",
         "slidev",
+        "Tekton",
         "Weaveworks"
     ],
     "[vue]": {
