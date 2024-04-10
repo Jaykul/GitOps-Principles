@@ -579,7 +579,9 @@ level: 3
 - Fleet
 
 <v-click>
-<img src="images/CNCFLandscape.png" alt="CNCF Landscape" />
+
+![CNCF Landscape](images/CNCFLandscape.png)
+
 </v-click>
 
 <!--

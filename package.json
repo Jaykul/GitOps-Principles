@@ -8,12 +8,12 @@
     "export": "slidev export"
   },
   "dependencies": {
-    "vue": "^3.4.21",
+    "@iconify-json/emojione": "^1.1.10",
+    "@iconify-json/logos": "^1.1.42",
+    "@katzumi/slidev-addon-qrcode": "^0.0.13",
     "@slidev/cli": "^0.48.1",
     "@slidev/theme-default": "latest",
-    "@katzumi/slidev-addon-qrcode": "^0.0.13",
     "slidev-theme-the-unnamed": "^0.0.16",
-    "@iconify-json/logos": "^1.1.42",
-    "@iconify-json/emojione": "^1.1.10"
+    "vue": "^3.4.21"
   }
 }
