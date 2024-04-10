@@ -566,6 +566,8 @@ Second, Jenkins-X, a re-imagining of Jenkins built on top of Tekton, which is re
 -->
 
 ---
+layout: image-center
+image: images/CNCFLandscape.png
 rightHeader: Tooling
 routeAlias: GitOps Agents
 title: GitOps Agents
@@ -577,12 +579,6 @@ level: 3
 - Flux
 - ArgoCD
 - Fleet
-
-<v-click>
-
-![CNCF Landscape](images/CNCFLandscape.png)
-
-</v-click>
 
 <!--
 
