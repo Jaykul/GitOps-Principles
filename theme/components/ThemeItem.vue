@@ -10,7 +10,7 @@ const props = defineProps<{
 
 
 const image = computed(() => {
-  if (props.content.startsWith('/') || props.content.startsWith('http')) {
+  if (props.content.includes('/') || props.content.startsWith('http')) {
     return resolveAssetUrl(props.content);
   } else {
     return false;
@@ -21,6 +21,6 @@ const image = computed(() => {
 </script>
 
 <template>
-  <img v-if="image" :src="props.content" :class="props.class" />
+  <img v-if="image" :src="image" :class="props.class" />
   <div v-else class="mb-0" :class="props.class"><Link class="important-border-none" :to=props.content>{{ props.content }}</Link></div>
 </template>
