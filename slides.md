@@ -15,8 +15,8 @@ mdc: true
 theme: ./theme
 colorSchema: light
 defaults:
-    leftFooter: /images/cc-by-sa.svg
-    rightFooter: /images/PSHSummit.png
+    leftFooter: images/cc-by-sa.svg
+    rightFooter: images/PSHSummit.png
     layout: default
 layout: cover
 background: images/E2984F049253590FFACD39F2C701E67920AB36C97BEF97AFD491B673980B991A.jpg
@@ -295,7 +295,7 @@ As you can see, GitOps does not focus on collaboration, nor on people or organiz
 ---
 layout: image-right
 rightHeader: What is GitOps?
-image: /images/turtles-all-the-way-down.jpg
+image: images/turtles-all-the-way-down.jpg
 bleed: true
 routeAlias: Declarative, Versioned and Immutable
 title: Declarative, Versioned and Immutable
@@ -347,7 +347,7 @@ The requirement here is that you have versions of your desired state that are im
 ---
 layout: image-right
 rightHeader: What is GitOps?
-image: /images/robotic-agents.jpg
+image: images/robotic-agents.jpg
 bleed: true
 routeAlias: Software Agents
 title: Software Agents
